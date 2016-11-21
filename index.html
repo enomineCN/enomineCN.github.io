@@ -87,7 +87,7 @@
 <meta name="description" content="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="just enjoy it">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://enomineCN.github.io/index.html">
 <meta property="og:site_name" content="just enjoy it">
 <meta property="og:description" content="description">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://enomineCN.github.io/"/>
 
   <title> just enjoy it </title>
 </head>
@@ -216,6 +216,204 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/21/itertools-gropby使用/" itemprop="url">
+                  itertools.gropby使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-21T16:36:33+08:00" content="2016-11-21">
+              2016-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>本周主要写了各种类型的财务报表，利用python的csv模块进行输出。</p>
+<p>在编写财务报表的过程中，出现了这样一种需求。</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">月份</th>
+<th style="text-align:center">电费</th>
+<th style="text-align:center">水费</th>
+<th style="text-align:center">燃气费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">100.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">30.00</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">40.00</td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">70.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">66.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">20.00</td>
+</tr>
+</tbody>
+</table>
+<p>类似于这样的报表，要将姓名和月份一致的信息，合并到一条中去。结果像这样：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">月份</th>
+<th style="text-align:center">电费</th>
+<th style="text-align:center">水费</th>
+<th style="text-align:center">燃气费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">100.00</td>
+<td style="text-align:center">30.00</td>
+<td style="text-align:center">40.00</td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">70.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">66.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">20.00</td>
+</tr>
+</tbody>
+</table>
+<p>我们使用<code>csv</code>模块 的 <code>DictWriter</code></p>
+<p>表1对应的数据结构为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">100.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">30.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">40.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">10.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">2</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">70.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">66.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">20.00</span>,</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<p>表2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">100.00</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">40.00</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">40.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">2</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">70.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">66.00</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">20.00</span>,</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<h2 id="如何用简介优雅的代码将表1的数据结构转化为表2？"><a href="#如何用简介优雅的代码将表1的数据结构转化为表2？" class="headerlink" title="如何用简介优雅的代码将表1的数据结构转化为表2？"></a>如何用简介优雅的代码将表1的数据结构转化为表2？</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> groupby</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_key</span><span class="params">(data)</span>:</span></div><div class="line">    <span class="keyword">return</span> data[<span class="string">'name'</span>] + str(data[<span class="string">'month'</span>])</div><div class="line"></div><div class="line">fees = (<span class="string">'electricity_fee'</span>, <span class="string">'water_fee'</span>, <span class="string">'gas_fee'</span>)</div><div class="line"></div><div class="line">rows_out = []</div><div class="line"><span class="keyword">for</span> key, group <span class="keyword">in</span> groupby(rows, key=get_key):</div><div class="line">    row = group[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> fee <span class="keyword">in</span> fees:</div><div class="line">        row[fee] = sum(item[fee] <span class="keyword">for</span> item <span class="keyword">in</span> group <span class="keyword">if</span> fee <span class="keyword">in</span> item)</div><div class="line">        rows_out.append(row)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -531,7 +729,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
