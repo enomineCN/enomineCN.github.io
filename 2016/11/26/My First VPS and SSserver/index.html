@@ -1,0 +1,585 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="VPS,Shadowsocks,SSserver," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自己搭梯子了。
+VPS选择在网上搜索VPS的时候，看到老左博客有各种V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My First VPS and SSserver">
+<meta property="og:url" content="http://enomineCN.github.io/2016/11/26/My First VPS and SSserver/index.html">
+<meta property="og:site_name" content="just enjoy it">
+<meta property="og:description" content="前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自己搭梯子了。
+VPS选择在网上搜索VPS的时候，看到老左博客有各种V">
+<meta property="og:updated_time" content="2016-11-28T01:53:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My First VPS and SSserver">
+<meta name="twitter:description" content="前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自己搭梯子了。
+VPS选择在网上搜索VPS的时候，看到老左博客有各种V">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://enomineCN.github.io/2016/11/26/My First VPS and SSserver/"/>
+
+  <title> My First VPS and SSserver | just enjoy it </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">just enjoy it</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                My First VPS and SSserver
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-26T12:20:33+08:00" content="2016-11-26">
+              2016-11-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。<br>当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。<br>就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自己搭梯子了。</p>
+<h2 id="VPS选择"><a href="#VPS选择" class="headerlink" title="VPS选择"></a>VPS选择</h2><p>在网上搜索VPS的时候，看到<a href="http://www.laozuo.org/" target="_blank" rel="external">老左博客</a>有各种VPS的介绍和评测。推荐的有<a href="https://bwh1.net/index.php" target="_blank" rel="external">BandwagonHost</a>、<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>、<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>三个性价比比较高的VPS，搬瓦工最便宜但是用的人太多，最近特别不稳定，最关键是官网不能直接访问，如果梯子挂了还要找别的梯子，于是就在<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>和<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>里面选了一个较为便宜的Vultr，月付5刀。</p>
+<h2 id="Shadowsocks介绍"><a href="#Shadowsocks介绍" class="headerlink" title="Shadowsocks介绍"></a>Shadowsocks介绍</h2><h2 id="Shadowsocks-Server-搭建"><a href="#Shadowsocks-Server-搭建" class="headerlink" title="Shadowsocks Server 搭建"></a>Shadowsocks Server 搭建</h2><p>首先SSH连接上VPS服务器。一般Linux系统都自带Python环境。</p>
+<h3 id="1-安装Shadowsocks"><a href="#1-安装Shadowsocks" class="headerlink" title="1.安装Shadowsocks"></a>1.安装Shadowsocks</h3><p>CentOS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;&amp; easy_install pip  </div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
+<h3 id="2-优化Shadowsocks性能"><a href="#2-优化Shadowsocks性能" class="headerlink" title="2.优化Shadowsocks性能"></a>2.优化Shadowsocks性能</h3><p>按照 SS 官方 Wiki，有如下优化策略：<br>创建<code>local.conf</code>配置文件：<code>vim /etc/sysctl.d/local.conf</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># max open files</span></div><div class="line">fs.file-max = 51200  </div><div class="line"><span class="comment"># max read buffer</span></div><div class="line">net.core.rmem_max = 67108864  </div><div class="line"><span class="comment"># max write buffer</span></div><div class="line">net.core.wmem_max = 67108864  </div><div class="line"><span class="comment"># default read buffer</span></div><div class="line">net.core.rmem_default = 65536  </div><div class="line"><span class="comment"># default write buffer</span></div><div class="line">net.core.wmem_default = 65536  </div><div class="line"><span class="comment"># max processor input queue</span></div><div class="line">net.core.netdev_max_backlog = 4096  </div><div class="line"><span class="comment"># max backlog</span></div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line"><span class="comment"># resist SYN flood attacks</span></div><div class="line">net.ipv4.tcp_syncookies = 1  </div><div class="line"><span class="comment"># reuse timewait sockets when safe</span></div><div class="line">net.ipv4.tcp_tw_reuse = 1  </div><div class="line"><span class="comment"># turn off fast timewait sockets recycling</span></div><div class="line">net.ipv4.tcp_tw_recycle = 0  </div><div class="line"><span class="comment"># short FIN timeout</span></div><div class="line">net.ipv4.tcp_fin_timeout = 30  </div><div class="line"><span class="comment"># short keepalive time</span></div><div class="line">net.ipv4.tcp_keepalive_time = 1200  </div><div class="line"><span class="comment"># outbound port range</span></div><div class="line">net.ipv4.ip_<span class="built_in">local</span>_port_range = 10000 65000  </div><div class="line"><span class="comment"># max SYN backlog</span></div><div class="line">net.ipv4.tcp_max_syn_backlog = 4096  </div><div class="line"><span class="comment"># max timewait sockets held by system simultaneously</span></div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000  </div><div class="line"><span class="comment"># turn on TCP Fast Open on both client and server side</span></div><div class="line">net.ipv4.tcp_fastopen = 3  </div><div class="line"><span class="comment"># TCP receive buffer</span></div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864  </div><div class="line"><span class="comment"># TCP write buffer</span></div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864  </div><div class="line"><span class="comment"># turn on path MTU discovery</span></div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line"></div><div class="line"><span class="comment"># for high-latency network</span></div><div class="line">net.ipv4.tcp_congestion_control = hybla</div><div class="line"></div><div class="line"><span class="comment"># for low-latency network, use cubic instead</span></div><div class="line"><span class="comment"># net.ipv4.tcp_congestion_control = cubic</span></div></pre></td></tr></table></figure></p>
+<h3 id="3-配置-Shadowsocks-配置文件"><a href="#3-配置-Shadowsocks-配置文件" class="headerlink" title="3.配置 Shadowsocks 配置文件"></a>3.配置 Shadowsocks 配置文件</h3><p>在 root 文件夹内，新建<code>ss/ssserver.json</code> 配置文件：<code>vim ~/ss/ssserver.json</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"server"</span>: <span class="string">"server_ip"</span>,</div><div class="line">    <span class="attr">"server_port"</span>: <span class="number">1088</span>,</div><div class="line">    <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="attr">"local_port"</span>: <span class="number">1080</span>,</div><div class="line">    <span class="attr">"password"</span>: <span class="string">"yourpassword"</span>,</div><div class="line">    <span class="attr">"timeout"</span>: <span class="number">300</span>,</div><div class="line">    <span class="attr">"method"</span>: <span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="attr">"fast_open"</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="4-启动并永久运行-Shadowsocks-服务端功能"><a href="#4-启动并永久运行-Shadowsocks-服务端功能" class="headerlink" title="4.启动并永久运行 Shadowsocks 服务端功能"></a>4.启动并永久运行 Shadowsocks 服务端功能</h3><ul>
+<li><p>启动命令<br><code>nohup ssserver -c /root/ss/ssserver.json -d start &amp;</code></p>
+<blockquote>
+<p>说明：<code>ssserver</code> 是 SS 的服务端命令。<code>-c</code> 表示以配置文件的方式运行 SS，<code>/root/ss/ssserver.json</code> 则是步骤 4 中新建的配置文件的路径。<code>-d</code> 表示在后台运行，这样允许用户进行其他操作。<code>start</code> 就是启动。<code>nohup</code> 以及最后的 <code>&amp;</code> 是让 SS 服务端一直运行，并把运行日志输出到当前用户主目录下的 nohup.out 文件中。</p>
+</blockquote>
+</li>
+<li><p>停止命令<br><code>ssserver -c /root/ss/ssserver.json -d stop</code></p>
+</li>
+</ul>
+<h3 id="5-防火墙打开服务端口"><a href="#5-防火墙打开服务端口" class="headerlink" title="5.防火墙打开服务端口"></a>5.防火墙打开服务端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1088/tcp</div><div class="line">firewall-cmd --permanent --zone=public --add-port=1088/udp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
+<h2 id="配置SS客户端"><a href="#配置SS客户端" class="headerlink" title="配置SS客户端"></a>配置SS客户端</h2><ul>
+<li>MAC</li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="external">Windows</a></li>
+<li>IOS(AppStore: Wingy)</li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-android" target="_blank" rel="external">Android</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/VPS/" rel="tag">#VPS</a>
+          
+            <a href="/tags/Shadowsocks/" rel="tag">#Shadowsocks</a>
+          
+            <a href="/tags/SSserver/" rel="tag">#SSserver</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/待学习列表/" rel="next" title="待学习列表">
+                <i class="fa fa-chevron-left"></i> 待学习列表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/28/PyPI使用国内源/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="E Nomine" />
+          <p class="site-author-name" itemprop="name">E Nomine</p>
+          <p class="site-description motion-element" itemprop="description">description</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPS选择"><span class="nav-number">2.</span> <span class="nav-text">VPS选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks介绍"><span class="nav-number">3.</span> <span class="nav-text">Shadowsocks介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks-Server-搭建"><span class="nav-number">4.</span> <span class="nav-text">Shadowsocks Server 搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装Shadowsocks"><span class="nav-number">4.1.</span> <span class="nav-text">1.安装Shadowsocks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优化Shadowsocks性能"><span class="nav-number">4.2.</span> <span class="nav-text">2.优化Shadowsocks性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-配置-Shadowsocks-配置文件"><span class="nav-number">4.3.</span> <span class="nav-text">3.配置 Shadowsocks 配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-启动并永久运行-Shadowsocks-服务端功能"><span class="nav-number">4.4.</span> <span class="nav-text">4.启动并永久运行 Shadowsocks 服务端功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-防火墙打开服务端口"><span class="nav-number">4.5.</span> <span class="nav-text">5.防火墙打开服务端口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置SS客户端"><span class="nav-number">5.</span> <span class="nav-text">配置SS客户端</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">E Nomine</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
