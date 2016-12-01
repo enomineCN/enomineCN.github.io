@@ -22,7 +22,7 @@
 豆瓣(douban) http://pypi.douban.com/simple/ 
 清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
 中国科学技术大学">
-<meta property="og:updated_time" content="2016-11-28T02:55:10.000Z">
+<meta property="og:updated_time" content="2016-12-01T03:18:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="just enjoy it">
 <meta name="twitter:description" content="PyPI使用国内源
@@ -71,7 +71,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="http://github.com/probberechts">Projects</a></li>
+          <li><a href="http://github.com/enominecn">Projects</a></li>
         
       </ul>
     </span>
@@ -82,6 +82,8 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
       <ul>
+        
+        <li><a class="icon" href="/2016/11/28/dev.qa.stage.prod/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
         <li><a class="icon" href="/2016/11/26/My First VPS and SSserver/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
@@ -151,11 +153,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install web.py -i http://pypi.douban.com/simple</div></pre></td></tr></table></figure>
 <p>如果有如下报错：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install web.py -i http://pypi.douban.com/simple --trusted-host pypi.douban.com</div></pre></td></tr></table></figure>
-<p>如果想配置成默认的源，方法如下：</p>
-<p>需要创建或修改配置文件（一般都是创建），</p>
-<p>linux的文件在<code>~/.pip/pip.conf</code></p>
+<p>如果想配置成默认的源，添加配置文件</p>
+<ul>
+<li>linux下<code>~/.pip/pip.conf</code></li>
+<li>windows下<code>%HOMEPATH%\pip\pip.ini</code></li>
+</ul>
 <p>修改内容为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">code:</div><div class="line">[global]</div><div class="line">index-url = http://pypi.douban.com/simple</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[global]</div><div class="line">index-url = http://pypi.douban.com/simple</div><div class="line">[install]</div><div class="line">trusted-host=pypi.douban</div></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -177,7 +181,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="http://github.com/probberechts">Projects</a></li>
+          <li><a href="http://github.com/enominecn">Projects</a></li>
         
       </ul>
     </nav>
