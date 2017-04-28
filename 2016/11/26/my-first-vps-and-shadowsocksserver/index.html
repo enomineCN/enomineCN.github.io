@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="My First VPS and ShadowsocksServer前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My First VPS and SSserver">
+<meta property="og:url" content="http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/index.html">
+<meta property="og:site_name" content="enomine">
+<meta property="og:description" content="My First VPS and ShadowsocksServer前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自">
+<meta property="og:updated_time" content="2017-04-28T08:27:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My First VPS and SSserver">
+<meta name="twitter:description" content="My First VPS and ShadowsocksServer前言早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自">
+    
+    
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+    
+    <!-- title -->
+    <title>My First VPS and SSserver</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <ul>
+        
+        <li><a class="icon" href="/2016/11/26/My First VPS and SSserver/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/11/25/待学习列表/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&text=My First VPS and SSserver"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&title=My First VPS and SSserver"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&is_video=false&description=My First VPS and SSserver"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject=My First VPS and SSserver&body=Check out this article: http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&title=My First VPS and SSserver"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&title=My First VPS and SSserver"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&title=My First VPS and SSserver"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&title=My First VPS and SSserver"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://enomineCN.github.io/2016/11/26/my-first-vps-and-shadowsocksserver/&name=My First VPS and SSserver&description="><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#My-First-VPS-and-ShadowsocksServer"><span class="toc-number">1.</span> <span class="toc-text">My First VPS and ShadowsocksServer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VPS选择"><span class="toc-number">1.2.</span> <span class="toc-text">VPS选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shadowsocks介绍"><span class="toc-number">1.3.</span> <span class="toc-text">Shadowsocks介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shadowsocks-Server-搭建"><span class="toc-number">1.4.</span> <span class="toc-text">Shadowsocks Server 搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装Shadowsocks"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.安装Shadowsocks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-优化Shadowsocks性能"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.优化Shadowsocks性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置-Shadowsocks-配置文件"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.配置 Shadowsocks 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-启动并永久运行-Shadowsocks-服务端功能"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.启动并永久运行 Shadowsocks 服务端功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-防火墙打开服务端口"><span class="toc-number">1.4.5.</span> <span class="toc-text">5.防火墙打开服务端口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SS客户端"><span class="toc-number">1.5.</span> <span class="toc-text">配置SS客户端</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        My First VPS and SSserver
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">enomine</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-11-26T04:20:33.000Z" itemprop="datePublished">2016-11-26</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/SSserver/">SSserver</a>, <a class="tag-link" href="/tags/Shadowsocks/">Shadowsocks</a>, <a class="tag-link" href="/tags/VPS/">VPS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="My-First-VPS-and-ShadowsocksServer"><a href="#My-First-VPS-and-ShadowsocksServer" class="headerlink" title="My First VPS and ShadowsocksServer"></a>My First VPS and ShadowsocksServer</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>早在2011年，我的高中同学JQ.Lee就给我普及了天朝GFW的相关知识，以及教会我科学上网的正确姿势，从此，一扇新的大门向我敞开。<br>当时，爱折腾的JQ.Lee就自己到国外买了台服务器，搭建起了自己的SSserver，他也十分大方的将自己的SSserver与我共享。<br>就这样我享受着自由上网，直到后来，他的梯子越来越不稳定，我就想自己搭梯子了。</p>
+<h2 id="VPS选择"><a href="#VPS选择" class="headerlink" title="VPS选择"></a>VPS选择</h2><p>在网上搜索VPS的时候，看到<a href="http://www.laozuo.org/" target="_blank" rel="external">老左博客</a>有各种VPS的介绍和评测。推荐的有<a href="https://bwh1.net/index.php" target="_blank" rel="external">BandwagonHost</a>、<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>、<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>三个性价比比较高的VPS，搬瓦工最便宜但是用的人太多，最近特别不稳定，最关键是官网不能直接访问，如果梯子挂了还要找别的梯子，于是就在<a href="https://www.vultr.com/" target="_blank" rel="external">Vultr</a>和<a href="https://www.linode.com/" target="_blank" rel="external">Linode</a>里面选了一个较为便宜的Vultr，月付5刀。</p>
+<h2 id="Shadowsocks介绍"><a href="#Shadowsocks介绍" class="headerlink" title="Shadowsocks介绍"></a>Shadowsocks介绍</h2><h2 id="Shadowsocks-Server-搭建"><a href="#Shadowsocks-Server-搭建" class="headerlink" title="Shadowsocks Server 搭建"></a>Shadowsocks Server 搭建</h2><p>首先SSH连接上VPS服务器。一般Linux系统都自带Python环境。</p>
+<h3 id="1-安装Shadowsocks"><a href="#1-安装Shadowsocks" class="headerlink" title="1.安装Shadowsocks"></a>1.安装Shadowsocks</h3><p>CentOS:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools &amp;&amp; easy_install pip  </div><div class="line">pip install shadowsocks</div></pre></td></tr></table></figure></p>
+<h3 id="2-优化Shadowsocks性能"><a href="#2-优化Shadowsocks性能" class="headerlink" title="2.优化Shadowsocks性能"></a>2.优化Shadowsocks性能</h3><p>按照 SS 官方 Wiki，有如下优化策略：<br>创建<code>local.conf</code>配置文件：<code>vim /etc/sysctl.d/local.conf</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># max open files</span></div><div class="line">fs.file-max = 51200  </div><div class="line"><span class="comment"># max read buffer</span></div><div class="line">net.core.rmem_max = 67108864  </div><div class="line"><span class="comment"># max write buffer</span></div><div class="line">net.core.wmem_max = 67108864  </div><div class="line"><span class="comment"># default read buffer</span></div><div class="line">net.core.rmem_default = 65536  </div><div class="line"><span class="comment"># default write buffer</span></div><div class="line">net.core.wmem_default = 65536  </div><div class="line"><span class="comment"># max processor input queue</span></div><div class="line">net.core.netdev_max_backlog = 4096  </div><div class="line"><span class="comment"># max backlog</span></div><div class="line">net.core.somaxconn = 4096</div><div class="line"></div><div class="line"><span class="comment"># resist SYN flood attacks</span></div><div class="line">net.ipv4.tcp_syncookies = 1  </div><div class="line"><span class="comment"># reuse timewait sockets when safe</span></div><div class="line">net.ipv4.tcp_tw_reuse = 1  </div><div class="line"><span class="comment"># turn off fast timewait sockets recycling</span></div><div class="line">net.ipv4.tcp_tw_recycle = 0  </div><div class="line"><span class="comment"># short FIN timeout</span></div><div class="line">net.ipv4.tcp_fin_timeout = 30  </div><div class="line"><span class="comment"># short keepalive time</span></div><div class="line">net.ipv4.tcp_keepalive_time = 1200  </div><div class="line"><span class="comment"># outbound port range</span></div><div class="line">net.ipv4.ip_<span class="built_in">local</span>_port_range = 10000 65000  </div><div class="line"><span class="comment"># max SYN backlog</span></div><div class="line">net.ipv4.tcp_max_syn_backlog = 4096  </div><div class="line"><span class="comment"># max timewait sockets held by system simultaneously</span></div><div class="line">net.ipv4.tcp_max_tw_buckets = 5000  </div><div class="line"><span class="comment"># turn on TCP Fast Open on both client and server side</span></div><div class="line">net.ipv4.tcp_fastopen = 3  </div><div class="line"><span class="comment"># TCP receive buffer</span></div><div class="line">net.ipv4.tcp_rmem = 4096 87380 67108864  </div><div class="line"><span class="comment"># TCP write buffer</span></div><div class="line">net.ipv4.tcp_wmem = 4096 65536 67108864  </div><div class="line"><span class="comment"># turn on path MTU discovery</span></div><div class="line">net.ipv4.tcp_mtu_probing = 1</div><div class="line"></div><div class="line"><span class="comment"># for high-latency network</span></div><div class="line">net.ipv4.tcp_congestion_control = hybla</div><div class="line"></div><div class="line"><span class="comment"># for low-latency network, use cubic instead</span></div><div class="line"><span class="comment"># net.ipv4.tcp_congestion_control = cubic</span></div></pre></td></tr></table></figure></p>
+<h3 id="3-配置-Shadowsocks-配置文件"><a href="#3-配置-Shadowsocks-配置文件" class="headerlink" title="3.配置 Shadowsocks 配置文件"></a>3.配置 Shadowsocks 配置文件</h3><p>在 root 文件夹内，新建<code>ss/ssserver.json</code> 配置文件：<code>vim ~/ss/ssserver.json</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"server"</span>: <span class="string">"server_ip"</span>,</div><div class="line">    <span class="attr">"server_port"</span>: <span class="number">1088</span>,</div><div class="line">    <span class="attr">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</div><div class="line">    <span class="attr">"local_port"</span>: <span class="number">1080</span>,</div><div class="line">    <span class="attr">"password"</span>: <span class="string">"yourpassword"</span>,</div><div class="line">    <span class="attr">"timeout"</span>: <span class="number">300</span>,</div><div class="line">    <span class="attr">"method"</span>: <span class="string">"aes-256-cfb"</span>,</div><div class="line">    <span class="attr">"fast_open"</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="4-启动并永久运行-Shadowsocks-服务端功能"><a href="#4-启动并永久运行-Shadowsocks-服务端功能" class="headerlink" title="4.启动并永久运行 Shadowsocks 服务端功能"></a>4.启动并永久运行 Shadowsocks 服务端功能</h3><ul>
+<li><p>启动命令<br><code>nohup ssserver -c /root/ss/ssserver.json -d start &amp;</code></p>
+<blockquote>
+<p>说明：<code>ssserver</code> 是 SS 的服务端命令。<code>-c</code> 表示以配置文件的方式运行 SS，<code>/root/ss/ssserver.json</code> 则是步骤 4 中新建的配置文件的路径。<code>-d</code> 表示在后台运行，这样允许用户进行其他操作。<code>start</code> 就是启动。<code>nohup</code> 以及最后的 <code>&amp;</code> 是让 SS 服务端一直运行，并把运行日志输出到当前用户主目录下的 nohup.out 文件中。</p>
+</blockquote>
+</li>
+<li><p>停止命令<br><code>ssserver -c /root/ss/ssserver.json -d stop</code></p>
+</li>
+</ul>
+<h3 id="5-防火墙打开服务端口"><a href="#5-防火墙打开服务端口" class="headerlink" title="5.防火墙打开服务端口"></a>5.防火墙打开服务端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --permanent --zone=public --add-port=1088/tcp</div><div class="line">firewall-cmd --permanent --zone=public --add-port=1088/udp</div><div class="line">firewall-cmd --reload</div></pre></td></tr></table></figure>
+<h2 id="配置SS客户端"><a href="#配置SS客户端" class="headerlink" title="配置SS客户端"></a>配置SS客户端</h2><ul>
+<li>MAC</li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-windows" target="_blank" rel="external">Windows</a></li>
+<li>IOS(AppStore: Wingy)</li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-android" target="_blank" rel="external">Android</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+      </div>
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 enomine
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

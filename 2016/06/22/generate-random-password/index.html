@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Generate Random Password
+
+今天，工作中需要为客户生成一个8位的随机密码，包含大小写字母和数字，项目中实现如下：
+123456789101112&quot;&quot;&quot;生成随机密码，包括大小写字母、数字，可以指定密码长度&quot;&quot;&quot;# 生成随机密码from random import choice, sampleimport stringdef generate_pwd(length=8, cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python生成随机密码">
+<meta property="og:url" content="http://enomineCN.github.io/2016/06/22/generate-random-password/index.html">
+<meta property="og:site_name" content="enomine">
+<meta property="og:description" content="Generate Random Password
+
+今天，工作中需要为客户生成一个8位的随机密码，包含大小写字母和数字，项目中实现如下：
+123456789101112&quot;&quot;&quot;生成随机密码，包括大小写字母、数字，可以指定密码长度&quot;&quot;&quot;# 生成随机密码from random import choice, sampleimport stringdef generate_pwd(length=8, cha">
+<meta property="og:updated_time" content="2017-04-28T08:27:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python生成随机密码">
+<meta name="twitter:description" content="Generate Random Password
+
+今天，工作中需要为客户生成一个8位的随机密码，包含大小写字母和数字，项目中实现如下：
+123456789101112&quot;&quot;&quot;生成随机密码，包括大小写字母、数字，可以指定密码长度&quot;&quot;&quot;# 生成随机密码from random import choice, sampleimport stringdef generate_pwd(length=8, cha">
+    
+    
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+    
+    <!-- title -->
+    <title>Python生成随机密码</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <ul>
+        
+        <li><a class="icon" href="/2016/06/30/git-chinese-show-error/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/06/22/hello-world/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://enomineCN.github.io/2016/06/22/generate-random-password/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&text=Python生成随机密码"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&title=Python生成随机密码"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&is_video=false&description=Python生成随机密码"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject=Python生成随机密码&body=Check out this article: http://enomineCN.github.io/2016/06/22/generate-random-password/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&title=Python生成随机密码"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&title=Python生成随机密码"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&title=Python生成随机密码"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&title=Python生成随机密码"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://enomineCN.github.io/2016/06/22/generate-random-password/&name=Python生成随机密码&description="><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python生成随机密码
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">enomine</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-06-22T06:11:25.000Z" itemprop="datePublished">2016-06-22</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/password/">password</a>, <a class="tag-link" href="/tags/random/">random</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Generate Random Password</p>
+<hr>
+<p>今天，工作中需要为客户生成一个8位的随机密码，包含大小写字母和数字，项目中实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line">生成随机密码，包括大小写字母、数字，可以指定密码长度</div><div class="line">"""</div><div class="line"><span class="comment"># 生成随机密码</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice, sample</div><div class="line"><span class="keyword">import</span> string</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate_pwd</span><span class="params">(length=<span class="number">8</span>, chars=string.ascii_letters + string.digits)</span>:</span></div><div class="line">    <span class="comment"># return ''.join([choice(chars) for _ in range(length)])</span></div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>.join(sample(chars, length))</div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    print(generate_pwd(<span class="number">8</span>))</div></pre></td></tr></table></figure>
+<p>​    </p>
+
+  </div>
+</article>
+
+
+
+      </div>
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 enomine
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

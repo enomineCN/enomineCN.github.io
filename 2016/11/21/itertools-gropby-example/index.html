@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="itertools-gropby-example问题背景本周主要写了各种类型的财务报表，利用python的csv模块进行输出。
+在编写财务报表的过程中，出现了这样一种需求。
+
+
+
+姓名
+月份
+电费
+水费
+燃气费
+
+
+
+
+张三
+1
+100.00
+
+
+
+
+张三
+1
+
+30.00
+
+
+
+张三
+1
+
+
+40.00
+
+
+张三
+1
+
+10.00
+
+
+
+张三
+2
+70.00
+
+
+
+
+李四
+3
+66.00">
+<meta property="og:type" content="article">
+<meta property="og:title" content="itertools.gropby使用例子">
+<meta property="og:url" content="http://enomineCN.github.io/2016/11/21/itertools-gropby-example/index.html">
+<meta property="og:site_name" content="enomine">
+<meta property="og:description" content="itertools-gropby-example问题背景本周主要写了各种类型的财务报表，利用python的csv模块进行输出。
+在编写财务报表的过程中，出现了这样一种需求。
+
+
+
+姓名
+月份
+电费
+水费
+燃气费
+
+
+
+
+张三
+1
+100.00
+
+
+
+
+张三
+1
+
+30.00
+
+
+
+张三
+1
+
+
+40.00
+
+
+张三
+1
+
+10.00
+
+
+
+张三
+2
+70.00
+
+
+
+
+李四
+3
+66.00">
+<meta property="og:updated_time" content="2017-04-28T08:27:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="itertools.gropby使用例子">
+<meta name="twitter:description" content="itertools-gropby-example问题背景本周主要写了各种类型的财务报表，利用python的csv模块进行输出。
+在编写财务报表的过程中，出现了这样一种需求。
+
+
+
+姓名
+月份
+电费
+水费
+燃气费
+
+
+
+
+张三
+1
+100.00
+
+
+
+
+张三
+1
+
+30.00
+
+
+
+张三
+1
+
+
+40.00
+
+
+张三
+1
+
+10.00
+
+
+
+张三
+2
+70.00
+
+
+
+
+李四
+3
+66.00">
+    
+    
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+    
+    <!-- title -->
+    <title>itertools.gropby使用例子</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <ul>
+        
+        <li><a class="icon" href="/2016/11/21/itertools-gropby使用/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/10/26/PyPI使用国内源/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&text=itertools.gropby使用例子"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&title=itertools.gropby使用例子"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&is_video=false&description=itertools.gropby使用例子"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject=itertools.gropby使用例子&body=Check out this article: http://enomineCN.github.io/2016/11/21/itertools-gropby-example/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&title=itertools.gropby使用例子"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&title=itertools.gropby使用例子"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&title=itertools.gropby使用例子"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&title=itertools.gropby使用例子"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://enomineCN.github.io/2016/11/21/itertools-gropby-example/&name=itertools.gropby使用例子&description="><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#itertools-gropby-example"><span class="toc-number">1.</span> <span class="toc-text">itertools-gropby-example</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题背景"><span class="toc-number">1.1.</span> <span class="toc-text">问题背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何用简介优雅的代码将表1的数据结构转化为表2？"><span class="toc-number">1.2.</span> <span class="toc-text">如何用简介优雅的代码将表1的数据结构转化为表2？</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        itertools.gropby使用例子
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">enomine</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2016-11-21T08:36:33.000Z" itemprop="datePublished">2016-11-21</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/gropby/">gropby</a>, <a class="tag-link" href="/tags/itertools/">itertools</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="itertools-gropby-example"><a href="#itertools-gropby-example" class="headerlink" title="itertools-gropby-example"></a>itertools-gropby-example</h1><h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>本周主要写了各种类型的财务报表，利用python的csv模块进行输出。</p>
+<p>在编写财务报表的过程中，出现了这样一种需求。</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">月份</th>
+<th style="text-align:center">电费</th>
+<th style="text-align:center">水费</th>
+<th style="text-align:center">燃气费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">100.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">30.00</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">40.00</td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">10.00</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">70.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">66.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">20.00</td>
+</tr>
+</tbody>
+</table>
+<p>类似于这样的报表，要将姓名和月份一致的信息，合并到一条中去。结果像这样：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">月份</th>
+<th style="text-align:center">电费</th>
+<th style="text-align:center">水费</th>
+<th style="text-align:center">燃气费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">100.00</td>
+<td style="text-align:center">30.00</td>
+<td style="text-align:center">40.00</td>
+</tr>
+<tr>
+<td>张三</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">70.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>李四</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">66.00</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">20.00</td>
+</tr>
+</tbody>
+</table>
+<p>我们使用<code>csv</code>模块 的 <code>DictWriter</code></p>
+<p>表1对应的数据结构为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">100.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">30.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">40.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">10.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">2</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">70.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">66.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">20.00</span>,</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<p>表2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[&#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">1</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">100.00</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">40.00</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">40.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'张三'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">2</span>,</div><div class="line">    <span class="string">'water_fee'</span>: <span class="number">70.00</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'李四'</span>,</div><div class="line">    <span class="string">'month'</span>: <span class="number">3</span>,</div><div class="line">    <span class="string">'electricity_fee'</span>: <span class="number">66.00</span>,</div><div class="line">    <span class="string">'gas_fee'</span>: <span class="number">20.00</span>,</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<h2 id="如何用简介优雅的代码将表1的数据结构转化为表2？"><a href="#如何用简介优雅的代码将表1的数据结构转化为表2？" class="headerlink" title="如何用简介优雅的代码将表1的数据结构转化为表2？"></a>如何用简介优雅的代码将表1的数据结构转化为表2？</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> groupby</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_key</span><span class="params">(data)</span>:</span></div><div class="line">    <span class="keyword">return</span> data[<span class="string">'name'</span>] + str(data[<span class="string">'month'</span>])</div><div class="line"></div><div class="line">fees = (<span class="string">'electricity_fee'</span>, <span class="string">'water_fee'</span>, <span class="string">'gas_fee'</span>)</div><div class="line"></div><div class="line">rows_out = []</div><div class="line"><span class="keyword">for</span> key, group <span class="keyword">in</span> groupby(rows, key=get_key):</div><div class="line">    row = group[<span class="number">0</span>]</div><div class="line">    <span class="keyword">for</span> fee <span class="keyword">in</span> fees:</div><div class="line">        row[fee] = sum(item[fee] <span class="keyword">for</span> item <span class="keyword">in</span> group <span class="keyword">if</span> fee <span class="keyword">in</span> item)</div><div class="line">        rows_out.append(row)</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+      </div>
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 enomine
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/enominecn">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
